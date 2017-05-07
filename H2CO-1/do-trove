@@ -1,0 +1,9 @@
+./j-trove0105_i16_II.x <file1.inp >file1.out 
+./j-trove0105_i16_II.x <file2.inp >file2.out 
+./j-trove0105_i16_II.x <file3.inp >file3.out 
+./j-trove0105_i16_II.x <file4.inp >file4.out 
+./j-trove0105_i16_II.x <file5.inp >file5.out 
+./j-trove0105_i16_II.x <file6.inp >file6.out 
+./j-trove0105_i16_II.x <file7.inp >file7.out 
+./j-trove0105_i16_II.x <file8.inp >file8.out 
+

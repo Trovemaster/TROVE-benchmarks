@@ -1,0 +1,43 @@
+In order to run this benchmark on COSMOS  submit using, e.g. 
+./b_trove.sh  test01 16 36 
+where test01 is the job-name (any string), 16 is the nunmber of sockets (16x8=number of processors) and 36 is wallclock time in hours. 
+The actual running script is run_trove_benchmark.csh which will execute four jobs:
+./j-trove2109.x <file1.inp > file1.out
+./j-trove2109.x <file2.inp > file2.out
+./j-trove2109.x <file3.inp > file3.out
+./j-trove2109.x <file4.inp > file4.out
+......
+
+This TROVE benchmark will run in several steps:
+
+Step 1: Produce the initial smaller J=0 HAMILTONIAN matrix and diagonalize it using DSYEV (file1.inp)
+Step 2: Convert to J=0 representaion; prepare matrix elements for  J>0 calculations (file2.inp)
+Step 3: Generate a J=0-5,10 energies and eigenfunctions  (file3.inp--file8.inp) by diagonalising 
+        four doube real, symmetric for each J using  DSYEV
+Step 4: Intensity calculations between J=0-5 states (file9.inp)
+Step 5: Generate a J=100 (doube real, symmetric) matrix  and store to the disk without diagonalization
+
+Here J is the rotational angular momentum. The size of the basis set (i.e. the dimension of the matrix) is given by 
+
+N = (2J+1) x N0 
+
+where N0 is the dimension at J=0, N0 is appox 2000.  ????
+
+The first two steps are small, the 3rd (especially J=10) is more expensive. 
+The step 5 requires is the longest and requires xxxx Gb of space 
+
+At the end of the output TROVE prints the time stamp, which can be used to assess different stages of the code.  
+Here for example for Step 5 the calculation of the matrix took 8704.7 s, while writing to the disk 23863.2 s (Full diagonalization). 
+
+              Timing data at 2015/11/09 15:37:33
+
+                                            Total time (seconds)  Self time (seconds)
+ Timer                               Calls  --------------------  -------------------
+ -----                               -----       Real       CPU        Real       CPU
+
+ TROVE                                  1.    34344.2  718860.1         0.1      13.1
+ Contracted Hamiltonian                 1.    34268.8  718741.2      1700.9   10412.7
+ Calculating the Hamiltonian ma         1.     8704.7  685330.2      8704.7  685330.2
+ Full diagonalization                   1.    23863.2   22998.3     23863.2   22998.3
+
+ (  7 timers contributing less than 1% are not shown)
