@@ -1,0 +1,18 @@
+#!/bin/bash
+#SBATCH -J TROVE-H2CO-1-mpi
+#SBATCH -p skylake
+#SBATCH -A #ACCOUNT#
+#SBATCH -N 5
+#SBATCH -n 10
+#SBATCH -c 16
+#SBATCH -t 1:0:00
+#SBATCH --exclusive
+#SBATCH -o "trove.%j.out"
+
+export OMP_NUM_THREADS=16
+
+export I_MPI_PIN=1
+
+export trove=#/path/to/trove.x#
+
+mpirun -np 10 -ppn 2 $trove file1.inp
