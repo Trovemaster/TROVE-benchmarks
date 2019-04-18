@@ -2,10 +2,10 @@ In order to run this benchmark on COSMOS  submit using, e.g.
 ./b_trove.sh  test01 16 36 
 where test01 is the job-name (any string), 16 is the nunmber of sockets (16x8=number of processors) and 36 is wallclock time in hours. 
 The actual running script is run_trove_benchmark.csh which will execute four jobs:
-./j-trove2109.x <file1.inp > file1.out
-./j-trove2109.x <file2.inp > file2.out
-./j-trove2109.x <file3.inp > file3.out
-./j-trove2109.x <file4.inp > file4.out
+./j-trove.x <file1.inp > file1.out
+./j-trove.x <file2.inp > file2.out
+./j-trove.x <file3.inp > file3.out
+./j-trove.x <file4.inp > file4.out
 ......
 
 This TROVE benchmark will run in several steps:
@@ -21,7 +21,7 @@ Here J is the rotational angular momentum. The size of the basis set (i.e. the d
 
 N = (2J+1) x N0 
 
-where N0 is the dimension at J=0, N0 is appox 2000.  ????
+where N0 is the dimension at J=0, N0 is appox 2000.
 
 The first two steps are small, the 3rd (especially J=10) is more expensive. 
 The step 5 requires is the longest and requires xxxx Gb of space 

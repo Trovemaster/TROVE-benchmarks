@@ -5,7 +5,7 @@
 
 setenv wdir $pwd
 
-setenv exec j-trove2109.x
+setenv exec j-trove.x
 
 
 echo $name
