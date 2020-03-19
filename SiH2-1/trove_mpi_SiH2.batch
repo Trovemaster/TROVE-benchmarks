@@ -1,0 +1,30 @@
+#!/bin/bash
+#SBATCH -J TROVE-SiH2
+#SBATCH -p skylake
+#SBATCH -A DIRAC-DP060-CPU
+#SBATCH -N 2
+#SBATCH -n 4
+#SBATCH -c 16
+#SBATCH -t 24:00:0
+#SBATCH --exclusive
+#SBATCH -o "SiH2.%j.out"
+
+module purge
+module load rhel7/default-peta4
+module unload intel/bundles/complib/2017.4
+module load intel/bundles/complib/2019.3
+
+export OMP_NUM_THREADS=8
+export TROVE=j-trove.x
+
+srun --mpi=pmi2 $TROVE SiH2_step1.inp    >  SiH2_step1.out
+srun --mpi=pmi2 $TROVE SiH2_step2.inp    >  SiH2_step2.out
+srun --mpi=pmi2 $TROVE SiH2_step3.inp    >  SiH2_step3.out
+srun --mpi=pmi2 $TROVE SiH2_step3_J0.inp >  SiH2_step3_J0.out
+srun --mpi=pmi2 $TROVE SiH2_step3_J1.inp >  SiH2_step3_J1.out
+srun --mpi=pmi2 $TROVE SiH2_step3_J2.inp >  SiH2_step3_J2.out
+srun --mpi=pmi2 $TROVE SiH2_step4.inp    >  SiH2_step4.out
+srun --mpi=pmi2 $TROVE SiH2_step5.inp    >  SiH2_step5.out    
+
+
+

@@ -1,0 +1,8 @@
+$LAUNCH $pwd/$exec <SiH2_step1.inp    >  SiH2_step1.out
+$LAUNCH $pwd/$exec <SiH2_step2.inp    >  SiH2_step2.out
+$LAUNCH $pwd/$exec <SiH2_step3.inp    >  SiH2_step3.out
+$LAUNCH $pwd/$exec <SiH2_step3_J0.inp >  SiH2_step3_J0.out
+$LAUNCH $pwd/$exec <SiH2_step3_J1.inp >  SiH2_step3_J1.out
+$LAUNCH $pwd/$exec <SiH2_step3_J2.inp >  SiH2_step3_J2.out
+$LAUNCH $pwd/$exec <SiH2_step4.inp    >  SiH2_step4.out
+$LAUNCH $pwd/$exec <SiH2_step5.inp    >  SiH2_step5.out    
