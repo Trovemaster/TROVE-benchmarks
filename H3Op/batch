@@ -1,0 +1,7 @@
+$LAUNCH $pwd/$exec <H3Op_fit_step1.inp     >H3Op_fit_step1.out     
+$LAUNCH $pwd/$exec <H3Op_fit_step2.inp     >H3Op_fit_step2.out
+$LAUNCH $pwd/$exec <H3Op_fit_step3_J0.inp  >H3Op_fit_step3_J0.out
+$LAUNCH $pwd/$exec <H3Op_fit_step3_J1.inp  >H3Op_fit_step3_J1.out
+$LAUNCH $pwd/$exec <H3Op_fit_step3_J2.inp  >H3Op_fit_step3_J2.out
+$LAUNCH $pwd/$exec <H3Op_fit_step4.inp     >H3Op_fit_step4.out
+$LAUNCH $pwd/$exec <H3Op_fit_step5.inp     >H3Op_fit_step5.out     
