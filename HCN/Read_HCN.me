@@ -1,0 +1,18 @@
+The code must be compiled with pot_HCN.f90, which defines the potential energy function of HCN [1] as the pot_user type. 
+
+In order to run this benchmark:
+./trove.x <HCN_step1.inp     >  HCN_step1.out    
+./trove.x <HCN_step2.inp     >  HCN_step2.out
+./trove.x <HCN_step3_J0.inp  >  HCN_step3_J0.out
+./trove.x <HCN_step3_J1.inp  >  HCN_step3_J1.out
+./trove.x <HCN_step3_J2.inp  >  HCN_step3_J2.out
+
+
+This TROVE calculation will run in several steps:
+
+Step 1: Produce the initial smaller J=0 HAMILTONIAN matrix and diagonalize it using DSYEV (HCN_step1.inp)
+Step 2: Convert to J=0 representaion; prepare matrix elements for  J>0 calculations (HCN_step2.inp)
+Step 3: Generate a J=0-2 energies and eigenfunctions  (HCN_step3_J<0,1,2>.inp,) by diagonalising 
+        double real, symmetric matrices for each J using  DSYEV
+
+[1]  V. Y. Makhnev, A. A. Kyuberis, O. L. Polyansky, I. I. Mizus, J. Tennyson,  and N. F. Zobov, J.Mol. Spectrosc.353, 40 (2018)

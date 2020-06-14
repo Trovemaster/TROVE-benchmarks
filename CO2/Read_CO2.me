@@ -1,0 +1,69 @@
+The TROVE input files for ro-vibrational calculations for CO2.
+
+The potential and dipole moment parameters are specified in the input files for 
+the potential energy surface Ames-2016 [1] and dipole moment surface UCL [2].
+
+[1] X. Huang, D. W. Schwenke, R. S. Freedman,  and T. J. Lee, J. Quant. Spectrosc. Radiat. Transf.203, 224 (2017)
+[2] Polyansky O. L., Bielska K., Ghysels M., Lodi L., Zobov N. F., Hodges J. T., Tennyson J., 2015, Phys. Rev. Lett., 114, 243001
+
+In order to run this benchmark:
+./trove.x <CO2-UCL-4000_step1.inp     >  CO2-UCL-4000_step1.out    
+./trove.x <CO2-UCL-4000_step2.inp     >  CO2-UCL-4000_step2.out
+./trove.x <CO2-UCL-4000_step3_J0.inp  >  CO2-UCL-4000_step3_J0.out
+./trove.x <CO2-UCL-4000_step3_J1.inp  >  CO2-UCL-4000_step3_J1.out
+./trove.x <CO2-UCL-4000_step3_J2.inp  >  CO2-UCL-4000_step3_J2.out
+./trove.x <CO2-UCL-4000_step4.inp     >  CO2-UCL-4000_step4.out    
+
+
+This TROVE calculation will run in several steps:
+
+Step 1: Produce the initial smaller J=0 HAMILTONIAN matrix and diagonalize it using DSYEV (CO2-UCL-4000_step1.inp)
+Step 2: Convert to J=0 representaion; prepare matrix elements for  J>0 calculations (CO2-UCL-4000_step2.inp)
+Step 3: Generate a J=0-2 energies and eigenfunctions  (CO2-UCL-4000_step3_J<0,1,2>.inp,) by diagonalising 
+        double real, symmetric matrices for each J using  DSYEV
+Step 4: Intensity calculations between J=0-2 states (CO2-UCL-4000_step4.inp)
+
+Here J is the rotational angular momentum.
+
+
+At the end of the output TROVE prints the time and memory reports, which can be used to assess different stages of the code.  
+
+Here is the memory consumption:
+
+ Memory Report:
+ Active Arrays                                        size (Gb)
+ trove%g_vib%me                                        0.1164E+01                
+ trove%g_rot%me                                        0.1376E+01                
+ trove%g_cor%me                                        0.4233E+00                
+ me%fields%coeff                                       0.1319E+02                
+ contr%eigen%vect                                      0.4717E+01                
+ Total memory   =                                    20.88757541 Gb
+ Maximal memory =                                    68.49091692 Gb (           365.0)
+
+ (       67 arrays contributing less than 1% are not shown)
+
+
+Here for example for Step 3 (calculation and diagonalization of two matrices) took 171 s, with the diagonalizaton 
+of 75.6 s.
+
+
+              Timing data at 2020/04/05 15:16:08
+
+                                            Total time (seconds)  Self time (seconds)
+ Timer                               Calls  --------------------  -------------------
+ -----                               -----       Real       CPU        Real       CPU
+
+ TROVE                                  1.      171.0    2797.4         0.3       0.3
+ FLcheck_point_Hamiltonian              3.       11.0      10.9        11.0      10.9
+ Primitive matelements                  1.       16.5      16.4        16.5      16.4
+ PTcheck_point_contracted_space         1.        5.7       5.4         5.7       5.4
+ PTsymmetrization                       1.        2.5       2.4         2.5       2.4
+ Contracted Hamiltonian                 1.      135.0    2761.9         1.9      29.1
+ check_point_active_space               2.        5.0       4.8         5.0       4.8
+ Calculating the Hamiltonian ma         1.       51.3     320.1        51.3     320.1
+ Full diagonalization                   2.       75.6    2407.0        75.6    2407.0
+
+ (  4 timers contributing less than 1% are not shown)
+
+
+End of TROVE
