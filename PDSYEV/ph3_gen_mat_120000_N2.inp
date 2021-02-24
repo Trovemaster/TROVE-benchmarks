@@ -1,0 +1,7 @@
+gen-mat 120000
+mem 100
+DIAGONALIZER pdsyevd
+ENERGY_THRESH  18000.0
+COEF_THRESH    1e-18
+
+
