@@ -1,7 +1,6 @@
-(  PH3, new refined PES )
+mem 64 gb
 
 verbose 5
-
 
 KinOrder  6  (Max order in the kinetic energy expansion)
 PotOrder  8   (Max order in the potential energy expansion)
@@ -11,19 +10,17 @@ Nmodes 6       (Number of modes = 3*Natoms-6)
 
 (ACTIVE SPACE CUTOFFS:)
 PRIMITIVES
-  Npolyads        18         (Number of primitive polyads)
+  Npolyads        18        (Number of primitive polyads)
   enercut        80000.     (energy cut for the primitive basis set)
 END
 
 CONTRACTION
-  Npolyads        18          (Number of contracted polyads)
-  enercut       80000.0     (energy cut for the contructed basis set)
+  Npolyads        18         (Number of contracted polyads)
+  enercut       80000.0      (energy cut for the contracted basis set)
   degeneracy     1e-3        (threshold used to define degenerate energies)
   coeff_thresh   1e-14       (threshold used to define symmetry)
   enercut_matelem 10000.0
   exp_coeff_thresh   1.0d-6
-  fast-ci
-  model j=0
 END
 
 
@@ -32,12 +29,12 @@ DIAGONALIZER
  enermax 15000
 end
 
-dstep   0.01        ( finite difference element for each mode )
-COORDS  linear      ( type of the internal coordinates: linear or local )
-TRANSFORM  R-ALPHA  ( internal coordinates xi(chi): normal, linear, r-s-delta, r-s-rho, r-alpha-tau, see molecule.f90 )
-MOLTYPE    XY3    ( Identifying type of the Molecule (e.g. XY3) )
-MOLECULE   PH3    ( Identifying the Molecule, e.g. PH3, BiH3 - optional )
-REFER-CONF RIGID  ( Reference configuarion: RIGID or NON-RIGID )
+dstep   0.01       
+COORDS  linear     
+TRANSFORM  R-ALPHA 
+MOLTYPE    XY3     
+MOLECULE   PH3     
+REFER-CONF RIGID   
 
 SYMGROUP C3v(M)
 
@@ -49,17 +46,10 @@ ZMAT
 end
 
 
-CHECK_POINT  (save,read,none,join,divide)
-hamiltonian  read ascii
-potential    read
-kinetic      read
-basis_set    read
-external     read 
-contract     save
-matelem      convert split
-extmatelem   convert split
-eigenfunc    read
-END
+control 
+step 2
+external 
+end 
 
 sparse
 
@@ -93,7 +83,7 @@ END
 
 POTEN
 NPARAM   109
-POT_TYPE  poten_xy3_morbid_10  (ph3_68_p14_fit_1e6_rb0_jgp_j0_b15l6n-f001.out)
+POT_TYPE  poten_xy3_morbid_10  
 COEFF  list  (powers or list)
 VE           0  0.00000000000000E+00
 FA1          1 -0.34350288027976E+03
